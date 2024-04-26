@@ -31,7 +31,7 @@ class CancionesFav{
                 temp.pop();
             }
         } else {
-            cout << "No hay cqanciones en la lista de reproduccion" << endl;
+            cout << "No hay canciones en la lista de reproduccion" << endl;
         }
     }
 };
