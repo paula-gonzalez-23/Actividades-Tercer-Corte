@@ -11,20 +11,50 @@ struct Departamento {
     string clima;
 };
 
-void agregarDepartamento(map<string, Departamento>& Colombia, const string& nombre, const string& capital, const string& clima){
-    Colombia[nombre] = {capital, clima};
-}
+map<string, Departamento>& Colombia;
 
-pair<string, string> infoDepartamento(const map<string, Departamento>& Colombia, const string& departamento){
+void agregarDepartamento(){
+
+    string ciudad, capital, clima;
+
+    cout << "Ingrese el nombre de la ciudad: " << endl;
+    cin >> ciudad;
+
+    cout << "Ingrese la capital de la ciudad: " << endl;
+    cin >> capital;
+
+    cout << "Ingrese el clima de la ciudad que ya ingreso: " << endl;
+    cin >> clima;
+
+    Colombia[ciudad] = {capital,clima};
+
+};
+
+pair<string, string> infoDepartamento(){
+
+    string departamento;
+
+    cout << "Ingrese el departamento del que requiere informacion: " << endl;
+    cin >> departamento;
+
     auto it = Colombia.find(departamento);
     if (it != Colombia.end()){
+        cout << "La capital de " << departamento << " es " << it->second.capital << " y su clima es: " << it->second.clima << endl;
         return make_pair(it -> second.capital, it -> second.clima);
     } else {
+        cout << "El departamento no existe en los registros" << endl;
         return make_pair("", "");
     }
-}
 
-set<string> buscarxClima(const map<string, Departamento>& Colombia, const string& clima){
+};
+
+set<string> buscarxClima(){
+
+    string clima;
+
+    cout << "Ingrese el clima por el que quiere buscar los departamentos: " << endl;
+    cin >> clima;
+
     set<string> ciudades;
     for (const auto& par : Colombia){
         if (par.second.clima == clima) {
@@ -32,39 +62,26 @@ set<string> buscarxClima(const map<string, Departamento>& Colombia, const string
         }
     }
 
-    return ciudades;
-}
-
-int main() {
-
-    string departamento, clima;
-
-    map<string, Departamento> Colombia;
-
-    agregarDepartamento(Colombia, "Amazonas", "Leticia", "Tropical");
-    agregarDepartamento(Colombia, "Antioquia", "Medellin", "Subtropical");
-    agregarDepartamento(Colombia, "Atlantico", "Barranquilla", "Tropical");
-
-    cout << "Ingrese el departamento del que requiere informacion: " << endl;
-    cin >> departamento;
-
-    auto informacion = infoDepartamento(Colombia,departamento);
-    if (informacion.first != ""){
-        cout << "La capital de " << departamento << " es " << informacion.first << " y su clima es: " << informacion.second << endl;
-    } else {
-        cout << "El departamento no existe en los registros" << endl;
-    }
-
-    cout << "Ingrese el clima por el que quiere buscar los departamentos: " << endl;
-    cin >> clima;
-
-    set<string> ciudades = buscarxClima(Colombia, clima);
     cout << "Ciudades con clima " << clima << ": ";
     for (const auto& ciudad : ciudades){
         cout << ciudad << ", ";
     } 
     cout << endl;
 
+    return ciudades;
+
+};
+
+d
+int main() {
+
+    agregarDepartamento();
+    agregarDepartamento();
+
+    infoDepartamento();
+
+    buscarxClima();
+    
     return 0;
 
 }
