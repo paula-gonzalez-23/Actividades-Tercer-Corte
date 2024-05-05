@@ -55,6 +55,7 @@ int main (){
     user.obtenerTurno();
     user.obtenerTurno();
     user.llamarTurno();
+    user.llamarTurno();
     user.pacientesEspera();
 
     return 0;
