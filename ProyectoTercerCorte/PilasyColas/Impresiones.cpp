@@ -57,13 +57,16 @@ void agregarImpresiones(queue<Impresion>& fila_impresiones){
     //Almacenamos la entrada en una variable
     cin >> paginas;
 
+    //Se instancia la estructura con un objeto y se le asignan las entradas que mando el usuario
     Impresion nueva = {documento, paginas};
+    //Se agrega a la cola
     fila_impresiones.push(nueva);
 
     cout << "Se agrego \"" << documento << "\" a la cola de impresiones" << endl;
 
 }
 
+//Se crea el menu de opciones
 void menu () {
 
     cout << "Bienvenido al sistema de impresiones" << endl;
@@ -73,11 +76,14 @@ void menu () {
     cout << "Ingrese la opcion que desea realizar: " << endl;
 }
 
+//Se crea el metodo de ejecucion
 int main () {
 
+    //Se crea la cola, que tiene los elementos de la estructura Impresion
     queue<Impresion> fila_impresiones;
     int opcion;
 
+    //Se crea un ciclo indefinido que siempre le mostrara al usuario el menu mientras no ingrese la opcion 3 
     do {
 
         menu();
